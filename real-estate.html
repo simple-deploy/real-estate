@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Property Group — Luxury Real Estate | Sydney & NSW</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0e0e0e;
+    --deep:   #141414;
+    --card:   #1a1a1a;
+    --slate:  #1e2a35;
+    --gold:   #b8964e;
+    --gold2:  #d4ae6a;
+    --cream:  #f8f5f0;
+    --white:  #ffffff;
+    --muted:  #888;
+    --border: #e8e2d9;
+    --text:   #2a2a2a;
+    --gap:    90px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  img { display: block; width: 100%; object-fit: cover; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+  /* ══════════ NAV ══════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    height: 74px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px;
+    background: rgba(14,14,14,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,150,78,0.2);
+    transition: background .3s;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem; font-weight: 600;
+    color: var(--white); letter-spacing: 1px;
+    display: flex; flex-direction: column; line-height: 1;
+  }
+  .nav-logo span { color: var(--gold); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 400; margin-top: 3px; font-family: 'DM Sans', sans-serif; }
+  .nav-links { display: flex; gap: 38px; list-style: none; align-items: center; }
+  .nav-links a {
+    color: #aaa; text-decoration: none;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: transparent !important;
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
+    padding: 9px 24px;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+  /* ══════════ PAGE SYSTEM ══════════ */
+  .page { display: none; padding-top: 74px; min-height: 100vh; }
+  .page.active { display: block; animation: fadeUp .4s ease both; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ══════════ HERO ══════════ */
+  .hero {
+    position: relative;
+    height: calc(100vh - 74px);
+    min-height: 620px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1600&q=85&auto=format&fit=crop');
+    background-size: cover; background-position: center;
+    opacity: 0.45;
+    transform: scale(1.04);
+    animation: kenBurns 14s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns { from { transform:scale(1.04); } to { transform:scale(1.0); } }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(14,14,14,0.85) 40%, rgba(14,14,14,0.1) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 56px;
+    max-width: 780px;
+  }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--gold); font-size: 0.7rem; letter-spacing: 3.5px;
+    text-transform: uppercase; font-weight: 500;
+    margin-bottom: 26px;
+  }
+  .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.2rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.08; margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero p {
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem; font-weight: 300;
+    max-width: 480px; margin-bottom: 44px;
+    line-height: 1.9;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-gold {
+    background: var(--gold); color: var(--ink);
+    padding: 14px 36px;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .btn-gold:hover { background: var(--gold2); transform: translateY(-2px); }
+  .btn-line {
+    background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 14px 36px;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-line:hover { border-color: var(--gold); color: var(--gold); }
+  /* hero search bar */
+  .hero-search {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+    background: var(--white);
+    padding: 22px 56px;
+    display: flex; gap: 0; align-items: stretch;
+    box-shadow: 0 -4px 40px rgba(0,0,0,0.18);
+  }
+  .hs-field {
+    flex: 1; display: flex; flex-direction: column;
+    padding: 6px 24px 6px 0;
+    border-right: 1px solid var(--border);
+    margin-right: 24px;
+  }
+  .hs-field:last-of-type { border-right: none; margin-right: 0; }
+  .hs-label { font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+  .hs-input {
+    border: none; outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--text);
+    background: transparent; font-weight: 500;
+    width: 100%;
+  }
+  .hs-input::placeholder { color: #bbb; font-weight: 300; }
+  .hs-btn {
+    background: var(--gold); color: var(--ink);
+    border: none; padding: 0 36px;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; white-space: nowrap;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+  .hs-btn:hover { background: var(--gold2); }
+
+  /* hero stats ribbon */
+  .hero-stats {
+    position: absolute; right: 56px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .hs-stat {
+    background: rgba(14,14,14,0.7);
+    backdrop-filter: blur(8px);
+    border-left: 2px solid var(--gold);
+    padding: 16px 22px;
+    text-align: right; min-width: 160px;
+  }
+  .hs-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; color: var(--gold);
+    font-weight: 600; line-height: 1; display: block;
+  }
+  .hs-stat-lbl { color: rgba(255,255,255,0.5); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* ══════════ SECTION PRIMITIVES ══════════ */
+  .sec { padding: var(--gap) 56px; }
+  .sec-white { background: var(--white); }
+  .sec-cream { background: var(--cream); }
+  .sec-dark { background: var(--ink); }
+  .sec-slate { background: var(--slate); }
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--gold); font-size: 0.68rem;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .sec-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--text); margin-bottom: 16px;
+    letter-spacing: -0.3px;
+  }
+  .sec-h em { font-style: italic; color: var(--gold); }
+  .sec-h-light { color: var(--white); }
+  .sec-p { color: var(--muted); max-width: 520px; font-weight: 300; font-size: 0.95rem; }
+  .sec-p-light { color: rgba(255,255,255,0.5); }
+
+  /* ══════════ LISTINGS GRID ══════════ */
+  .listings-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 24px; margin-top: 52px;
+  }
+  .listing-card {
+    background: var(--white);
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
+    cursor: pointer;
+  }
+  .listing-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+  .listing-card.featured { grid-column: span 2; }
+  .listing-img { position: relative; overflow: hidden; }
+  .listing-img img { transition: transform .6s ease; }
+  .listing-card:hover .listing-img img { transform: scale(1.05); }
+  .listing-img .tag {
+    position: absolute; top: 18px; left: 18px;
+    background: var(--gold); color: var(--ink);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 14px;
+  }
+  .listing-img .tag.sold { background: var(--ink); color: var(--white); }
+  .listing-img .tag.leased { background: var(--slate); color: var(--white); }
+  .listing-img .price-badge {
+    position: absolute; bottom: 0; right: 0;
+    background: rgba(14,14,14,0.9);
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    padding: 10px 18px;
+  }
+  .listing-body { padding: 22px 24px 26px; }
+  .listing-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--text); margin-bottom: 4px;
+  }
+  .listing-addr { color: var(--muted); font-size: 0.82rem; margin-bottom: 16px; }
+  .listing-specs { display: flex; gap: 20px; flex-wrap: wrap; }
+  .spec { display: flex; align-items: center; gap: 6px; color: var(--text); font-size: 0.82rem; font-weight: 500; }
+  .spec-icon { font-size: 0.9rem; }
+
+  /* ══════════ AGENTS ══════════ */
+  .agents-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 2px; margin-top: 52px;
+  }
+  .agent-card { background: var(--white); overflow: hidden; transition: box-shadow .3s; }
+  .agent-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+  .agent-photo { height: 280px; overflow: hidden; position: relative; }
+  .agent-photo img { height: 100%; width: 100%; transition: transform .5s; }
+  .agent-card:hover .agent-photo img { transform: scale(1.04); }
+  .agent-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,14,14,0.5) 0%, transparent 50%);
+  }
+  .agent-info { padding: 20px 22px 24px; border-top: 2px solid var(--gold); }
+  .agent-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .agent-title { color: var(--gold); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+  .agent-stats-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .a-stat { font-size: 0.78rem; color: var(--muted); }
+  .a-stat strong { color: var(--text); }
+  .agent-contact { margin-top: 14px; display: flex; gap: 10px; }
+  .a-btn {
+    flex: 1; padding: 8px; text-align: center;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; border: 1px solid var(--border); color: var(--text);
+    background: transparent; transition: all .2s;
+  }
+  .a-btn.primary { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .a-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+  /* ══════════ SOLD BANNER ══════════ */
+  .sold-ticker {
+    background: var(--gold);
+    padding: 16px 0; overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 28s linear infinite;
+  }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-item {
+    display: inline-block; margin: 0 40px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ink);
+  }
+  .ticker-dot { color: rgba(0,0,0,0.3); margin-right: 40px; }
+
+  /* ══════════ SERVICES GRID ══════════ */
+  .svc-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 2px; margin-top: 52px;
+  }
+  .svc-card {
+    background: var(--white); padding: 44px 36px;
+    border-bottom: 3px solid transparent;
+    transition: border-color .3s, box-shadow .3s;
+    position: relative;
+  }
+  .svc-card:hover { border-bottom-color: var(--gold); box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+  .svc-icon { font-size: 2rem; margin-bottom: 22px; display: block; }
+  .svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+  .svc-card p { color: var(--muted); font-size: 0.88rem; font-weight: 300; }
+  .svc-num { position: absolute; top: 28px; right: 28px; font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(184,150,78,0.12); }
+
+  /* ══════════ TESTIMONIALS ══════════ */
+  .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 52px; }
+  .testi-card { background: var(--white); padding: 36px 32px; position: relative; overflow: hidden; transition: box-shadow .3s; }
+  .testi-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.09); }
+  .testi-card::before { content: '"'; font-family: 'Cormorant Garamond', serif; font-size: 7rem; color: rgba(184,150,78,0.08); position: absolute; top: -10px; left: 16px; line-height: 1; }
+  .testi-stars { color: var(--gold); margin-bottom: 18px; font-size: 0.85rem; letter-spacing: 3px; }
+  .testi-card p { color: #666; font-size: 0.9rem; font-style: italic; font-weight: 300; margin-bottom: 24px; line-height: 1.8; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-av {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), #8a6820);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--white);
+    flex-shrink: 0;
+  }
+  .testi-name { font-weight: 600; font-size: 0.88rem; color: var(--text); }
+  .testi-detail { font-size: 0.75rem; color: var(--muted); }
+
+  /* ══════════ SPLIT SECTION ══════════ */
+  .split { display: grid; grid-template-columns: 1fr 1fr; }
+  .split-img { min-height: 520px; overflow: hidden; }
+  .split-img img { height: 100%; width: 100%; object-fit: cover; }
+  .split-body { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+  .split-body-dark { background: var(--ink); }
+  .split-body-dark .sec-h { color: var(--white); }
+  .split-body-dark .sec-p { color: rgba(255,255,255,0.5); }
+  .feat-list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+  .feat-item { display: flex; gap: 16px; align-items: flex-start; }
+  .feat-dot { width: 28px; height: 28px; min-width: 28px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.75rem; margin-top: 2px; }
+  .feat-item span { font-size: 0.92rem; font-weight: 300; }
+  .feat-item-dark span { color: rgba(255,255,255,0.65); }
+
+  /* ══════════ WHY PICK PAGE ══════════ */
+  .wp-banner {
+    background: var(--ink);
+    padding: 90px 56px 80px; position: relative; overflow: hidden;
+  }
+  .wp-banner-bg {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+    background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80&auto=format&fit=crop');
+    background-size: cover; background-position: center;
+    opacity: 0.18;
+  }
+  .wp-banner .sec-h { font-size: clamp(2.4rem, 4.5vw, 4rem); max-width: 640px; color: var(--white); }
+  .wp-banner .sec-p { color: rgba(255,255,255,0.5); margin-top: 16px; }
+  .reasons-masonry {
+    display: grid; grid-template-columns: repeat(2,1fr);
+    gap: 2px; margin-top: 2px;
+  }
+  .reason-block {
+    background: var(--white); padding: 46px 44px;
+    display: flex; gap: 26px;
+    transition: background .3s;
+  }
+  .reason-block:hover { background: #fdf9f4; }
+  .reason-block:nth-child(even) { background: var(--cream); }
+  .reason-block:nth-child(even):hover { background: #f0ead9; }
+  .r-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: rgba(184,150,78,0.18); line-height: 1; flex-shrink: 0; width: 64px; }
+  .r-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+  .r-body p { color: var(--muted); font-size: 0.88rem; font-weight: 300; }
+  .proof-row {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 2px; background: var(--ink);
+  }
+  .proof-cell { background: var(--ink); padding: 52px 40px; text-align: center; border-right: 1px solid rgba(255,255,255,0.04); }
+  .proof-cell:last-child { border: none; }
+  .proof-n { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); display: block; margin-bottom: 8px; }
+  .proof-l { color: rgba(255,255,255,0.35); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; }
+  .guarantee-block {
+    background: var(--gold); padding: 72px 56px;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .guarantee-block h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--ink); max-width: 520px; line-height: 1.2; }
+  .guarantee-block p { color: rgba(0,0,0,0.6); margin-top: 10px; font-size: 0.95rem; }
+
+  /* ══════════ SERVICES PAGE ══════════ */
+  .services-hero-re {
+    position: relative; overflow: hidden;
+    background: var(--ink); padding: 90px 56px 80px;
+  }
+  .services-hero-re-bg {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+    background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80&auto=format&fit=crop');
+    background-size: cover; background-position: center;
+    opacity: 0.15;
+  }
+  .services-hero-re .sec-h { color: var(--white); font-size: clamp(2.5rem, 5vw, 4.2rem); max-width: 620px; }
+  .service-accordion { margin-top: 60px; }
+  .sa-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .sa-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 0; cursor: pointer;
+    transition: color .2s;
+  }
+  .sa-header:hover { color: var(--gold); }
+  .sa-header-left { display: flex; align-items: center; gap: 24px; }
+  .sa-num { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); font-weight: 600; letter-spacing: 2px; }
+  .sa-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--text); transition: color .2s; }
+  .sa-header:hover .sa-title { color: var(--gold); }
+  .sa-arrow { color: var(--gold); font-size: 1.1rem; transition: transform .3s; }
+  .sa-item.open .sa-arrow { transform: rotate(180deg); }
+  .sa-body { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; }
+  .sa-item.open .sa-body { max-height: 400px; }
+  .sa-inner { padding: 0 0 32px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .sa-inner p { color: var(--muted); font-size: 0.9rem; font-weight: 300; grid-column: span 2; }
+  .sa-inner ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .sa-inner ul li { color: var(--text); font-size: 0.87rem; display: flex; align-items: center; gap: 10px; }
+  .sa-inner ul li::before { content: '→'; color: var(--gold); }
+  .sa-price-tag {
+    display: inline-block; margin-top: 14px;
+    background: var(--ink); color: var(--gold);
+    font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600; padding: 7px 18px;
+  }
+  /* three-col service cards */
+  .svc-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 60px; }
+  .svc-big {
+    background: var(--white); padding: 48px 40px;
+    display: flex; flex-direction: column;
+    border-top: 3px solid transparent;
+    transition: border-color .3s;
+  }
+  .svc-big:hover { border-top-color: var(--gold); }
+  .svc-big .eyebrow { margin-bottom: 14px; }
+  .svc-big h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+  .svc-big p { color: var(--muted); font-size: 0.88rem; font-weight: 300; margin-bottom: 20px; flex: 1; }
+  .svc-big ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .svc-big ul li { font-size: 0.86rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+  .svc-big ul li::before { content: '→'; color: var(--gold); }
+
+  /* ══════════ BOOKING PAGE ══════════ */
+  .booking-wrap-re {
+    display: grid; grid-template-columns: 1fr 460px;
+    min-height: calc(100vh - 74px);
+  }
+  .bleft {
+    position: relative; overflow: hidden;
+  }
+  .bleft-img {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f28f2394?w=1200&q=80&auto=format&fit=crop');
+    background-size: cover; background-position: center;
+  }
+  .bleft-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(14,14,14,0.6) 0%, rgba(14,14,14,0.85) 100%);
+  }
+  .bleft-content { position: relative; z-index: 2; padding: 70px 56px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .bleft-top .eyebrow-light { display: flex; align-items: center; gap: 12px; color: var(--gold); font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; }
+  .bleft-top .eyebrow-light::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .bleft-top h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
+  .bleft-top h2 em { color: var(--gold); font-style: italic; }
+  .bleft-top p { color: rgba(255,255,255,0.55); font-weight: 300; max-width: 420px; }
+  .bleft-info { display: flex; flex-direction: column; gap: 18px; }
+  .bli { display: flex; align-items: flex-start; gap: 16px; }
+  .bli-icon { width: 36px; height: 36px; min-width: 36px; border: 1px solid rgba(184,150,78,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+  .bli h4 { color: var(--white); font-size: 0.85rem; font-weight: 500; margin-bottom: 2px; }
+  .bli span { color: rgba(255,255,255,0.45); font-size: 0.8rem; font-weight: 300; }
+  .avail-panel { background: rgba(255,255,255,0.06); border: 1px solid rgba(184,150,78,0.2); padding: 22px 26px; margin-top: 40px; }
+  .avail-panel h4 { color: var(--gold); font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px; font-weight: 600; }
+  .avail-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .avail-row:last-child { border: none; }
+  .avail-day { color: rgba(255,255,255,0.6); font-size: 0.83rem; }
+  .avail-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+  .ab-open { background: rgba(100,196,100,0.12); color: #5cb85c; }
+  .ab-few  { background: rgba(184,150,78,0.15); color: var(--gold); }
+  .ab-full { background: rgba(200,80,80,0.1); color: #c05050; }
+
+  .bright { background: var(--cream); padding: 60px 48px; overflow-y: auto; }
+  .bright h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; color: var(--text); margin-bottom: 30px; }
+  .fg { margin-bottom: 20px; }
+  .fg label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-bottom: 7px; }
+  .fg input, .fg select, .fg textarea {
+    width: 100%; background: var(--white);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text);
+    outline: none; appearance: none;
+    transition: border-color .2s;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
+  .fg textarea { height: 96px; resize: vertical; }
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .time-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .tc {
+    background: var(--white); border: 1px solid var(--border);
+    color: var(--muted); font-size: 0.76rem; font-weight: 600;
+    letter-spacing: 0.5px; padding: 9px 14px; cursor: pointer;
+    transition: all .2s;
+  }
+  .tc:hover, .tc.sel { background: var(--ink); border-color: var(--ink); color: var(--gold); }
+  .submit-re {
+    width: 100%; background: var(--gold); color: var(--ink);
+    border: none; padding: 15px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+    transition: background .2s, transform .15s;
+    margin-top: 6px;
+  }
+  .submit-re:hover { background: var(--gold2); transform: translateY(-1px); }
+  .form-note { font-size: 0.73rem; color: #aaa; margin-top: 14px; font-weight: 300; line-height: 1.6; }
+  .form-success {
+    display: none; margin-top: 14px;
+    background: #f0fff4; border: 1px solid #9ae6b4;
+    padding: 16px 20px; color: #276749; font-size: 0.88rem;
+  }
+  .form-success.show { display: block; }
+
+  /* ══════════ FOOTER ══════════ */
+  footer { background: var(--ink); padding: 64px 56px 28px; }
+  .foot-top { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 52px; }
+  .foot-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+  .foot-brand-tag { color: var(--gold); font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
+  .foot-brand-desc { color: rgba(255,255,255,0.35); font-size: 0.84rem; font-weight: 300; line-height: 1.9; }
+  .foot-awards { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .foot-award { background: rgba(255,255,255,0.04); border: 1px solid rgba(184,150,78,0.2); color: var(--gold); font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; padding: 5px 14px; }
+  .foot-col h4 { color: rgba(255,255,255,0.25); font-size: 0.62rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .foot-col ul li { font-size: 0.83rem; font-weight: 300; }
+  .foot-col ul li a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color .2s; }
+  .foot-col ul li a:hover { color: var(--gold); }
+  .foot-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .foot-bottom p { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
+  .foot-legal { display: flex; gap: 24px; }
+  .foot-legal a { color: rgba(255,255,255,0.2); font-size: 0.75rem; text-decoration: none; transition: color .2s; }
+  .foot-legal a:hover { color: var(--gold); }
+
+  /* ══════════ RESPONSIVE ══════════ */
+  @media(max-width:960px){
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-content, .sec, .wp-banner, .services-hero-re, .bleft-content, .bright { padding-left: 22px; padding-right: 22px; }
+    .hero-search { padding: 18px 22px; flex-wrap: wrap; gap: 10px; }
+    .listings-grid, .agents-grid, .svc-grid, .testi-grid, .reasons-masonry, .proof-row, .svc-row { grid-template-columns: 1fr; }
+    .listing-card.featured { grid-column: span 1; }
+    .booking-wrap-re { grid-template-columns: 1fr; }
+    .bleft { min-height: 400px; }
+    .split { grid-template-columns: 1fr; }
+    .hero-stats { display: none; }
+    .foot-top { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="nav-logo">
+    Meridian Property Group
+    <span>Sydney · NSW · Est. 2008</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active" onclick="nav('home',this)">Home</a></li>
+    <li><a href="#" onclick="nav('whypick',this)">Why Choose Us</a></li>
+    <li><a href="#" onclick="nav('services',this)">Our Services</a></li>
+    <li><a href="#" class="nav-cta" onclick="nav('booking',this)">Book Appraisal</a></li>
+  </ul>
+</nav>
+
+
+<!-- ══════════════════════════ HOME ══════════════════════════ -->
+<div id="home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Premium Property · Sydney & NSW</div>
+      <h1>Your Dream Home<br>Starts With <em>The Right<br>Agent.</em></h1>
+      <p>Meridian Property Group brings deep local knowledge, a curated network of serious buyers, and a track record of record-breaking sales to every property we list.</p>
+      <div class="hero-actions">
+        <button class="btn-gold" onclick="nav('booking',null)">Book Free Appraisal</button>
+        <button class="btn-line" onclick="nav('services',null)">How We Work</button>
+      </div>
+    </div>
+    <!-- Stats ribbon right -->
+    <div class="hero-stats">
+      <div class="hs-stat"><span class="hs-stat-num">$3.8B+</span><span class="hs-stat-lbl">Sales in 2024</span></div>
+      <div class="hs-stat"><span class="hs-stat-num">1,240</span><span class="hs-stat-lbl">Properties Sold</span></div>
+      <div class="hs-stat"><span class="hs-stat-num">17 Days</span><span class="hs-stat-lbl">Avg. Days on Market</span></div>
+      <div class="hs-stat"><span class="hs-stat-num">103%</span><span class="hs-stat-lbl">Avg. Asking vs. Sale</span></div>
+    </div>
+    <!-- Search bar -->
+    <div class="hero-search">
+      <div class="hs-field">
+        <span class="hs-label">Location</span>
+        <input class="hs-input" type="text" placeholder="Suburb, postcode or street…">
+      </div>
+      <div class="hs-field">
+        <span class="hs-label">Property Type</span>
+        <input class="hs-input" type="text" placeholder="House, apartment, land…">
+      </div>
+      <div class="hs-field">
+        <span class="hs-label">Price Range</span>
+        <input class="hs-input" type="text" placeholder="$1M — $5M">
+      </div>
+      <div class="hs-field">
+        <span class="hs-label">Bedrooms</span>
+        <input class="hs-input" type="text" placeholder="Any">
+      </div>
+      <button class="hs-btn">Search Properties</button>
+    </div>
+  </section>
+
+  <!-- FEATURED LISTINGS -->
+  <section class="sec sec-cream">
+    <div class="eyebrow">Featured Properties</div>
+    <h2 class="sec-h">Exceptional Homes,<br><em>Exceptional Locations</em></h2>
+    <p class="sec-p">A hand-picked selection of our current listings across Sydney's most sought-after suburbs.</p>
+    <div class="listings-grid">
+
+      <!-- Featured large card -->
+      <div class="listing-card featured">
+        <div class="listing-img" style="height:360px">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=80&auto=format&fit=crop" alt="Luxury home Mosman" style="height:100%">
+          <div class="tag">For Sale</div>
+          <div class="price-badge">$6,450,000</div>
+        </div>
+        <div class="listing-body">
+          <h3>Architecturally Designed Harbour Views Residence</h3>
+          <div class="listing-addr">📍 42 Raglan Street, Mosman NSW 2088</div>
+          <div class="listing-specs">
+            <span class="spec"><span class="spec-icon">🛏</span> 5 Beds</span>
+            <span class="spec"><span class="spec-icon">🚿</span> 4 Baths</span>
+            <span class="spec"><span class="spec-icon">🚗</span> 3 Cars</span>
+            <span class="spec"><span class="spec-icon">📐</span> 820 m²</span>
+            <span class="spec"><span class="spec-icon">🌊</span> Harbour Views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regular card -->
+      <div class="listing-card">
+        <div class="listing-img" style="height:240px">
+          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80&auto=format&fit=crop" alt="Neutral Bay home" style="height:100%">
+          <div class="tag">For Sale</div>
+          <div class="price-badge">$3,200,000</div>
+        </div>
+        <div class="listing-body">
+          <h3>Double-Storey Family Home with Pool</h3>
+          <div class="listing-addr">📍 18 Kurraba Road, Neutral Bay NSW 2089</div>
+          <div class="listing-specs">
+            <span class="spec"><span class="spec-icon">🛏</span> 4 Beds</span>
+            <span class="spec"><span class="spec-icon">🚿</span> 3 Baths</span>
+            <span class="spec"><span class="spec-icon">🚗</span> 2 Cars</span>
+            <span class="spec"><span class="spec-icon">📐</span> 510 m²</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card">
+        <div class="listing-img" style="height:240px">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80&auto=format&fit=crop" alt="Palm Beach luxury" style="height:100%">
+          <div class="tag">For Sale</div>
+          <div class="price-badge">$8,900,000</div>
+        </div>
+        <div class="listing-body">
+          <h3>Beachfront Masterpiece — Absolute Frontage</h3>
+          <div class="listing-addr">📍 7 Ocean Road, Palm Beach NSW 2108</div>
+          <div class="listing-specs">
+            <span class="spec"><span class="spec-icon">🛏</span> 6 Beds</span>
+            <span class="spec"><span class="spec-icon">🚿</span> 5 Baths</span>
+            <span class="spec"><span class="spec-icon">🚗</span> 3 Cars</span>
+            <span class="spec"><span class="spec-icon">📐</span> 1,100 m²</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card">
+        <div class="listing-img" style="height:240px">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80&auto=format&fit=crop" alt="Balmoral home" style="height:100%">
+          <div class="tag sold">Sold</div>
+          <div class="price-badge" style="color:#888;">$4,750,000</div>
+        </div>
+        <div class="listing-body">
+          <h3>Contemporary Hamptons on Balmoral Slopes</h3>
+          <div class="listing-addr">📍 33 Fernleigh Road, Mosman NSW 2088</div>
+          <div class="listing-specs">
+            <span class="spec"><span class="spec-icon">🛏</span> 5 Beds</span>
+            <span class="spec"><span class="spec-icon">🚿</span> 3 Baths</span>
+            <span class="spec"><span class="spec-icon">🚗</span> 2 Cars</span>
+            <span class="spec"><span class="spec-icon">📐</span> 680 m²</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card">
+        <div class="listing-img" style="height:240px">
+          <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80&auto=format&fit=crop" alt="Inner city apartment" style="height:100%">
+          <div class="tag leased">Leased</div>
+          <div class="price-badge" style="color:#888;">$4,200/wk</div>
+        </div>
+        <div class="listing-body">
+          <h3>Sub-Penthouse — Panoramic City Views</h3>
+          <div class="listing-addr">📍 1901/1 Macquarie Street, Sydney NSW 2000</div>
+          <div class="listing-specs">
+            <span class="spec"><span class="spec-icon">🛏</span> 3 Beds</span>
+            <span class="spec"><span class="spec-icon">🚿</span> 2 Baths</span>
+            <span class="spec"><span class="spec-icon">🚗</span> 2 Cars</span>
+            <span class="spec"><span class="spec-icon">📐</span> 210 m²</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOLD TICKER -->
+  <div class="sold-ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item">Sold — 42 Raglan St Mosman $6.45M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 7 Ocean Rd Palm Beach $8.9M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 18 Kurraba Rd Neutral Bay $3.2M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Leased — 1901/1 Macquarie St Sydney $4,200/wk</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 15 The Esplanade Balmoral $5.1M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 3 Sirius Cove Mosman $7.2M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 42 Raglan St Mosman $6.45M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 7 Ocean Rd Palm Beach $8.9M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 18 Kurraba Rd Neutral Bay $3.2M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Leased — 1901/1 Macquarie St Sydney $4,200/wk</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 15 The Esplanade Balmoral $5.1M</span><span class="ticker-dot">✦</span>
+      <span class="ticker-item">Sold — 3 Sirius Cove Mosman $7.2M</span><span class="ticker-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- SPLIT — ABOUT + INTERIOR IMAGE -->
+  <div class="split">
+    <div class="split-img">
+      <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=900&q=80&auto=format&fit=crop" alt="Modern luxury interior" style="height:100%;min-height:520px;">
+    </div>
+    <div class="split-body" style="background:var(--white)">
+      <div class="eyebrow">About Meridian</div>
+      <h2 class="sec-h">Sydney's Premier<br>Property <em>Specialists</em></h2>
+      <p class="sec-p">Founded in 2008 by Victoria Meridian, our agency has grown into one of Sydney's most trusted and recognised property groups — with a reputation built entirely on results and relationships.</p>
+      <div class="feat-list">
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Specialising in premium residential properties across Sydney's Lower, Middle, and Upper North Shore</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Average sale price 103% of asking — consistently above market</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Average 17 days on market vs. Sydney average of 34 days</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>REINSW Award for Excellence — Boutique Agency of the Year 2023</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Dedicated buyer database of 8,000+ pre-qualified purchasers</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENTS -->
+  <section class="sec sec-cream">
+    <div class="eyebrow">Meet the Team</div>
+    <h2 class="sec-h">Our Agents Know<br><em>Every Street</em></h2>
+    <p class="sec-p">Expert local knowledge is the difference between a good sale and a great one. Our agents live in the suburbs they sell.</p>
+    <div class="agents-grid">
+      <div class="agent-card">
+        <div class="agent-photo">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80&auto=format&fit=crop&face" alt="Victoria Meridian">
+          <div class="agent-photo-overlay"></div>
+        </div>
+        <div class="agent-info">
+          <h3>Victoria Meridian</h3>
+          <div class="agent-title">Principal & Founder</div>
+          <div class="agent-stats-row">
+            <span class="a-stat"><strong>$920M+</strong> sales</span>
+            <span class="a-stat"><strong>16 yrs</strong> exp.</span>
+          </div>
+          <div class="agent-contact">
+            <button class="a-btn">0412 800 100</button>
+            <button class="a-btn primary" onclick="nav('booking',null)">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-photo">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop&face" alt="James Harrington">
+          <div class="agent-photo-overlay"></div>
+        </div>
+        <div class="agent-info">
+          <h3>James Harrington</h3>
+          <div class="agent-title">Senior Sales Agent</div>
+          <div class="agent-stats-row">
+            <span class="a-stat"><strong>$480M+</strong> sales</span>
+            <span class="a-stat"><strong>11 yrs</strong> exp.</span>
+          </div>
+          <div class="agent-contact">
+            <button class="a-btn">0412 800 102</button>
+            <button class="a-btn primary" onclick="nav('booking',null)">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-photo">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&auto=format&fit=crop&face" alt="Priya Nair">
+          <div class="agent-photo-overlay"></div>
+        </div>
+        <div class="agent-info">
+          <h3>Priya Nair</h3>
+          <div class="agent-title">Sales Agent — North Shore</div>
+          <div class="agent-stats-row">
+            <span class="a-stat"><strong>$210M+</strong> sales</span>
+            <span class="a-stat"><strong>7 yrs</strong> exp.</span>
+          </div>
+          <div class="agent-contact">
+            <button class="a-btn">0412 800 104</button>
+            <button class="a-btn primary" onclick="nav('booking',null)">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&face" alt="Liam Whitfield">
+          <div class="agent-photo-overlay"></div>
+        </div>
+        <div class="agent-info">
+          <h3>Liam Whitfield</h3>
+          <div class="agent-title">Property Manager</div>
+          <div class="agent-stats-row">
+            <span class="a-stat"><strong>180+</strong> managed</span>
+            <span class="a-stat"><strong>8 yrs</strong> exp.</span>
+          </div>
+          <div class="agent-contact">
+            <button class="a-btn">0412 800 106</button>
+            <button class="a-btn primary" onclick="nav('booking',null)">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES TEASER -->
+  <section class="sec sec-white">
+    <div class="eyebrow">What We Do</div>
+    <h2 class="sec-h">Full-Service Property,<br><em>Seamlessly Handled</em></h2>
+    <p class="sec-p">From appraisal to settlement — and everything in between — we take care of every detail so you don't have to.</p>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num">01</div><span class="svc-icon">🏠</span><h3>Residential Sales</h3><p>Auction campaigns, private treaty, and off-market sales. We match your property with the right buyers from our 8,000+ pre-qualified database.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><span class="svc-icon">📊</span><h3>Free Property Appraisal</h3><p>A comprehensive market analysis and honest appraisal of your property's value — no obligation, no hard sell, just expert insight.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><span class="svc-icon">🔑</span><h3>Property Management</h3><p>End-to-end rental management. Tenant screening, lease management, maintenance coordination, and monthly reporting.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><span class="svc-icon">🏢</span><h3>Buyer's Advocacy</h3><p>Let us find, assess, and negotiate the purchase of your next property — including off-market opportunities your competitor can't access.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><span class="svc-icon">📸</span><h3>Premium Marketing</h3><p>Professional photography, architectural floor plans, drone footage, Domain & realestate.com.au premium listings, and social media campaigns.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><span class="svc-icon">🤝</span><h3>Off-Market Network</h3><p>Access to exclusive off-market properties before they hit the open market — through our private network of sellers and buyers.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="sec sec-cream">
+    <div class="eyebrow">Client Stories</div>
+    <h2 class="sec-h">What Our Vendors &<br><em>Buyers Say</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★ ★ ★ ★ ★</div>
+        <p>Victoria achieved $480,000 above our reserve at auction. The pre-auction campaign was flawless — professional photography, great open home presentation, and a genuine crowd on the day. Exceptional result and exceptional agent.</p>
+        <div class="testi-author"><div class="testi-av">RB</div><div><div class="testi-name">Robert & Clare B.</div><div class="testi-detail">Sold — Mosman, $6.45M</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★ ★ ★ ★ ★</div>
+        <p>James found us our dream home off-market — a property that never appeared on realestate.com.au. Without his buyer advocacy, we simply never would have had access. Worth every cent of his fee twice over.</p>
+        <div class="testi-author"><div class="testi-av">ML</div><div><div class="testi-name">Michael & Tanya L.</div><div class="testi-detail">Purchased — Neutral Bay</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★ ★ ★ ★ ★</div>
+        <p>Liam manages our portfolio of three investment properties and he's brilliant — responsive, proactive, and our tenants love him. We've had zero vacancy in two years. I'd recommend Meridian's property management to any investor.</p>
+        <div class="testi-author"><div class="testi-av">AK</div><div><div class="testi-name">Anita K.</div><div class="testi-detail">Investment Portfolio — 3 Properties</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK SPLIT — KITCHEN IMAGE + CTA -->
+  <div class="split">
+    <div class="split-body split-body-dark">
+      <div class="eyebrow">Free Appraisal</div>
+      <h2 class="sec-h sec-h-light">Thinking of Selling?<br>Find Out What Your<br><em>Home Is Worth</em></h2>
+      <p class="sec-p sec-p-light" style="margin-top:16px;">Our no-obligation property appraisal gives you an honest, data-driven valuation based on current Sydney market conditions — delivered by an agent who actually knows your suburb.</p>
+      <div class="feat-list" style="margin-top:30px">
+        <div class="feat-item feat-item-dark"><div class="feat-dot">✓</div><span style="color:rgba(255,255,255,0.65)">Completed within 48 hours of your enquiry</span></div>
+        <div class="feat-item feat-item-dark"><div class="feat-dot">✓</div><span style="color:rgba(255,255,255,0.65)">Comparable sales analysis included</span></div>
+        <div class="feat-item feat-item-dark"><div class="feat-dot">✓</div><span style="color:rgba(255,255,255,0.65)">No obligation, no pressure, completely free</span></div>
+      </div>
+      <button class="btn-gold" style="margin-top:36px;display:inline-block;" onclick="nav('booking',null)">Book Your Free Appraisal</button>
+    </div>
+    <div class="split-img">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format&fit=crop" alt="Modern kitchen" style="height:100%;min-height:520px;">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand-name">Meridian Property Group</div>
+        <div class="foot-brand-tag">Sydney · Lower & Upper North Shore · Est. 2008</div>
+        <div class="foot-brand-desc">A boutique Sydney real estate agency delivering record results through local expertise, a pre-qualified buyer network, and a relentless commitment to our clients' outcomes. Licensed Real Estate Agent NSW — Licence No. 20084412.</div>
+        <div class="foot-awards">
+          <span class="foot-award">REINSW Boutique Agency 2023</span>
+          <span class="foot-award">REB Top 50 Agent 2024</span>
+          <span class="foot-award">Domain Platinum Agent</span>
+        </div>
+      </div>
+      <div class="foot-col"><h4>Services</h4><ul><li><a href="#">Residential Sales</a></li><li><a href="#">Property Appraisal</a></li><li><a href="#">Property Management</a></li><li><a href="#">Buyer's Advocacy</a></li><li><a href="#">Off-Market Properties</a></li></ul></div>
+      <div class="foot-col"><h4>Agency</h4><ul><li><a href="#">About</a></li><li><a href="#">Our Team</a></li><li><a href="#">Why Choose Us</a></li><li><a href="#">Sold Results</a></li><li><a href="#">News & Insights</a></li></ul></div>
+      <div class="foot-col"><h4>Contact</h4><ul><li>Level 3, 22 Miller Street<br>North Sydney NSW 2060</li><li><a href="tel:+61292940400">(02) 9294 0400</a></li><li><a href="#">info@meridianproperty.com.au</a></li><li>Mon–Sat 8:30am–6pm</li><li>Sun: By appointment</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2025 Meridian Property Group Pty Ltd. All rights reserved. ABN 48 192 004 331.</p>
+      <div class="foot-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Complaints</a></div>
+    </div>
+  </footer>
+
+</div><!-- /home -->
+
+
+<!-- ══════════════════════════ WHY CHOOSE US ══════════════════════════ -->
+<div id="whypick" class="page">
+
+  <div class="wp-banner">
+    <div class="wp-banner-bg"></div>
+    <div class="eyebrow">Why Meridian</div>
+    <h2 class="sec-h sec-h-light">We Don't Just Sell Properties.<br>We <em>Protect Your Wealth.</em></h2>
+    <p class="sec-p sec-p-light" style="margin-top:14px;">Choosing an agent is one of the most consequential financial decisions you'll make. Here's exactly what makes Meridian different — in plain language.</p>
+  </div>
+
+  <div class="reasons-masonry">
+    <div class="reason-block"><div class="r-num">01</div><div class="r-body"><h3>We Average 103% of Asking Price</h3><p>In 2024, our vendors received an average of 103% of their asking price — while the Sydney market average was 98.4%. That difference on a $3M home is $138,000 more in your pocket. This is the result of strategic pricing, competitive campaigns, and exceptional negotiation.</p></div></div>
+    <div class="reason-block"><div class="r-num">02</div><div class="r-body"><h3>Pre-Qualified Buyer Database of 8,000+</h3><p>Before your property ever hits realestate.com.au, we've already contacted 8,000+ pre-qualified buyers who've registered specific price ranges, suburb preferences, and property types. Genuine competition drives prices up — and we engineer that competition deliberately.</p></div></div>
+    <div class="reason-block"><div class="r-num">03</div><div class="r-body"><h3>Average 17 Days on Market vs. Sydney's 34</h3><p>Longer days on market create stigma — buyers wonder why a property is sitting. Our average is 17 days, half the Sydney average, because we enter the market with the right pricing strategy, a prepared property, and an active buyer pool ready to move quickly.</p></div></div>
+    <div class="reason-block"><div class="r-num">04</div><div class="r-body"><h3>Off-Market Access Before Public Listings</h3><p>Over 30% of our transactions happen before a property is publicly listed. Our private network of buyers and sellers means opportunities that never appear on any portal — for both buyers seeking discretion and vendors wanting a private sale.</p></div></div>
+    <div class="reason-block"><div class="r-num">05</div><div class="r-body"><h3>Boutique Agency — You Deal With Senior Agents Only</h3><p>We are deliberately small. Every client works directly with a senior agent — not a junior who will hand you off. Victoria and James personally oversee all high-value listings. Boutique service means your property gets the attention it deserves.</p></div></div>
+    <div class="reason-block"><div class="r-num">06</div><div class="r-body"><h3>Fully Managed, Premium Marketing Campaigns</h3><p>We invest in your property's presentation and marketing because it directly affects your sale price. Professional architectural photography, drone footage, 3D virtual tours, Domain Premier and realestate.com.au premium listings — all included in our service.</p></div></div>
+    <div class="reason-block"><div class="r-num">07</div><div class="r-body"><h3>Transparent Fees — No Hidden Costs</h3><p>Our commission structure is clearly explained upfront. No surprise marketing levies, no administration fees buried in the fine print. We provide a complete written cost summary before you sign anything. If you don't understand every line item, we haven't done our job.</p></div></div>
+    <div class="reason-block"><div class="r-num">08</div><div class="r-body"><h3>Independent — We Work For You, Not a Franchise</h3><p>We are proudly independent, not affiliated with any national franchise. Our loyalty is to our clients and our reputation — not a head office quota. This means we can price and negotiate in your best interests at all times, without any conflict of interest.</p></div></div>
+  </div>
+
+  <div class="proof-row">
+    <div class="proof-cell"><span class="proof-n">$3.8B+</span><div class="proof-l">Total Sales Value 2024</div></div>
+    <div class="proof-cell"><span class="proof-n">1,240</span><div class="proof-l">Properties Sold</div></div>
+    <div class="proof-cell"><span class="proof-n">103%</span><div class="proof-l">Average of Asking Price</div></div>
+    <div class="proof-cell"><span class="proof-n">4.9★</span><div class="proof-l">Google Review Average</div></div>
+  </div>
+
+  <div class="split">
+    <div class="split-img">
+      <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=900&q=80&auto=format&fit=crop" alt="Waterfront Sydney property" style="height:100%;min-height:480px;">
+    </div>
+    <div class="split-body" style="background:var(--cream);">
+      <div class="eyebrow">Our Coverage Area</div>
+      <h2 class="sec-h">Local Expertise Across<br>Greater <em>Sydney</em></h2>
+      <p class="sec-p">We focus exclusively on Sydney's most prestigious markets — giving our agents unmatched depth of local knowledge rather than breadth without expertise.</p>
+      <div class="feat-list" style="margin-top:28px;">
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Lower North Shore: Mosman, Neutral Bay, Cremorne, Kirribilli</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Upper North Shore: Killara, Turramurra, Gordon, Wahroonga</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Northern Beaches: Palm Beach, Avalon, Pittwater, Mona Vale</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Eastern Suburbs: Vaucluse, Double Bay, Woollahra, Rose Bay</span></div>
+        <div class="feat-item"><div class="feat-dot">✓</div><span>Sydney CBD & Surrounds: Millers Point, Pyrmont, Darling Point</span></div>
+      </div>
+      <button class="btn-gold" style="margin-top:32px;" onclick="nav('booking',null)">Book Free Appraisal</button>
+    </div>
+  </div>
+
+  <div class="guarantee-block">
+    <div>
+      <h2>Our Promise: If You're Not Happy After 60 Days, You Can Cancel — No Penalty.</h2>
+      <p>We're so confident in our service that we back it with a 60-day no-lock-in guarantee. No agency in Sydney offers this. We do.</p>
+    </div>
+    <button class="btn-gold" onclick="nav('booking',null)" style="flex-shrink:0;">Get Started Today</button>
+  </div>
+
+  <footer>
+    <div class="foot-top">
+      <div><div class="foot-brand-name">Meridian Property Group</div><div class="foot-brand-tag">Sydney · Est. 2008</div><div class="foot-brand-desc">Sydney's premier boutique real estate agency. REINSW Boutique Agency of the Year 2023.</div></div>
+      <div class="foot-col"><h4>Services</h4><ul><li><a href="#">Sales</a></li><li><a href="#">Appraisal</a></li><li><a href="#">Property Mgmt</a></li><li><a href="#">Buyer's Advocacy</a></li></ul></div>
+      <div class="foot-col"><h4>Agency</h4><ul><li><a href="#">About</a></li><li><a href="#">Team</a></li><li><a href="#">Results</a></li></ul></div>
+      <div class="foot-col"><h4>Contact</h4><ul><li>22 Miller St, North Sydney</li><li><a href="tel:+61292940400">(02) 9294 0400</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><p>© 2025 Meridian Property Group. All rights reserved.</p><div class="foot-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+  </footer>
+
+</div><!-- /whypick -->
+
+
+<!-- ══════════════════════════ SERVICES ══════════════════════════ -->
+<div id="services" class="page">
+
+  <div class="services-hero-re">
+    <div class="services-hero-re-bg"></div>
+    <div class="eyebrow">Our Services</div>
+    <h2 class="sec-h sec-h-light">Everything You Need<br>to <em>Buy, Sell & Invest</em></h2>
+    <p class="sec-p sec-p-light" style="margin-top:14px;">A complete suite of property services under one roof — delivered by agents who are experts in the Sydney market.</p>
+  </div>
+
+  <div class="sec sec-white" style="padding-top:60px;padding-bottom:0;">
+    <div class="service-accordion" id="accordion">
+
+      <div class="sa-item open">
+        <div class="sa-header" onclick="toggle(this)">
+          <div class="sa-header-left"><span class="sa-num">01</span><span class="sa-title">Residential Sales — Auction & Private Treaty</span></div>
+          <span class="sa-arrow">▼</span>
+        </div>
+        <div class="sa-body">
+          <div class="sa-inner">
+            <p>Whether you're selling by auction or private treaty, we design a campaign around your property's unique strengths and your timeline. Our agents are licensed auctioneers and experienced negotiators who know how to create competition and close at premium prices.</p>
+            <ul>
+              <li>Comparative market analysis and pricing strategy</li>
+              <li>Full marketing campaign management</li>
+              <li>Professional open home management and presentation</li>
+              <li>Pre-auction and private treaty negotiation</li>
+              <li>Auction day management and calling</li>
+            </ul>
+            <ul>
+              <li>Post-auction negotiation if passed in</li>
+              <li>Contract exchange coordination with your solicitor</li>
+              <li>Settlement day management</li>
+              <li>Ongoing suburb market updates</li>
+            </ul>
+            <div><div class="sa-price-tag">Commission from 1.8% + GST — Fixed fee available</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-item">
+        <div class="sa-header" onclick="toggle(this)">
+          <div class="sa-header-left"><span class="sa-num">02</span><span class="sa-title">Free Property Appraisal</span></div>
+          <span class="sa-arrow">▼</span>
+        </div>
+        <div class="sa-body">
+          <div class="sa-inner">
+            <p>Our no-cost, no-obligation property appraisal gives you a clear, data-backed picture of your home's current market value. Completed within 48 hours of your initial enquiry.</p>
+            <ul>
+              <li>Comparable sales analysis (last 6 months)</li>
+              <li>Current market conditions assessment</li>
+              <li>Property presentation recommendations</li>
+              <li>Estimated sale price range with methodology</li>
+            </ul>
+            <ul>
+              <li>Proposed marketing strategy overview</li>
+              <li>Timeline and expected days on market</li>
+            </ul>
+            <div><div class="sa-price-tag">Completely Free — No Obligation</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-item">
+        <div class="sa-header" onclick="toggle(this)">
+          <div class="sa-header-left"><span class="sa-num">03</span><span class="sa-title">Property Management & Investment</span></div>
+          <span class="sa-arrow">▼</span>
+        </div>
+        <div class="sa-body">
+          <div class="sa-inner">
+            <p>Maximise your investment return with stress-free property management. We screen tenants rigorously, respond to maintenance proactively, and keep vacancy rates at near zero.</p>
+            <ul>
+              <li>Comprehensive tenant screening and referencing</li>
+              <li>Lease preparation and bond lodgement</li>
+              <li>Routine inspection reports (quarterly)</li>
+              <li>Maintenance coordination with trusted trades</li>
+            </ul>
+            <ul>
+              <li>Monthly financial statements and EOFY summaries</li>
+              <li>Rent arrears management</li>
+              <li>Tenancy tribunal representation</li>
+              <li>Market rent reviews and lease renewals</li>
+            </ul>
+            <div><div class="sa-price-tag">Management fee 5.5% of rent + GST</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-item">
+        <div class="sa-header" onclick="toggle(this)">
+          <div class="sa-header-left"><span class="sa-num">04</span><span class="sa-title">Buyer's Advocacy & Acquisition</span></div>
+          <span class="sa-arrow">▼</span>
+        </div>
+        <div class="sa-body">
+          <div class="sa-inner">
+            <p>Let our advocates work exclusively for you to find, assess, and negotiate the purchase of your next property — including off-market opportunities unavailable to the general public.</p>
+            <ul>
+              <li>Detailed buyer brief and criteria development</li>
+              <li>Off-market and pre-market property sourcing</li>
+              <li>Independent property due diligence</li>
+              <li>Auction bidding on your behalf</li>
+            </ul>
+            <ul>
+              <li>Price and condition negotiation</li>
+              <li>Contract review coordination</li>
+              <li>Post-purchase settlement support</li>
+            </ul>
+            <div><div class="sa-price-tag">From 1.5% of purchase price</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-item">
+        <div class="sa-header" onclick="toggle(this)">
+          <div class="sa-header-left"><span class="sa-num">05</span><span class="sa-title">Premium Marketing & Presentation</span></div>
+          <span class="sa-arrow">▼</span>
+        </div>
+        <div class="sa-body">
+          <div class="sa-inner">
+            <p>Your property's first impression determines its sale price. We don't cut corners on presentation — our marketing packages are designed to present your home at its absolute best across every channel.</p>
+            <ul>
+              <li>Architectural & lifestyle photography (full day shoot)</li>
+              <li>Drone and aerial footage</li>
+              <li>3D Matterport virtual tour</li>
+              <li>Domain Premier and realestate.com.au Premium listings</li>
+            </ul>
+            <ul>
+              <li>Bespoke property brochure (printed & digital)</li>
+              <li>Targeted social media campaign (Instagram, Facebook)</li>
+              <li>Database direct mail to 8,000+ registered buyers</li>
+              <li>Pre-listing digital teaser campaign</li>
+            </ul>
+            <div><div class="sa-price-tag">Packages from $4,800 — included in most campaigns</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3 BIG SERVICE CARDS WITH IMAGES -->
+  <div class="sec sec-cream" style="padding-top:70px;">
+    <div class="eyebrow">At A Glance</div>
+    <h2 class="sec-h">Built for Buyers,<br><em>Sellers & Investors</em></h2>
+    <div class="svc-row" style="margin-top:44px;">
+      <div class="svc-big">
+        <div class="eyebrow">For Vendors</div>
+        <h2>Sell With Confidence</h2>
+        <p>Our proven sales system averages 103% of asking price and 17 days on market — backed by Sydney's most active buyer database.</p>
+        <ul><li>Free property appraisal</li><li>Auction & private treaty</li><li>Premium marketing included</li><li>60-day cancellation guarantee</li></ul>
+        <button class="btn-gold" onclick="nav('booking',null)">Book Appraisal</button>
+      </div>
+      <div class="svc-big" style="background:var(--ink);">
+        <div class="eyebrow">For Buyers</div>
+        <h2 style="color:var(--white);">Find the <em style="color:var(--gold)">Right</em> Home</h2>
+        <p style="color:rgba(255,255,255,0.5)">Access off-market properties, expert suburb guidance, and a buyer's advocate who negotiates on your behalf — not the seller's.</p>
+        <ul style="color:#aaa"><li>Off-market access</li><li>Buyer's advocacy service</li><li>Suburb & price analysis</li><li>Auction bidding</li></ul>
+        <button class="btn-gold" style="margin-top:auto;" onclick="nav('booking',null)">Start Your Search</button>
+      </div>
+      <div class="svc-big">
+        <div class="eyebrow">For Investors</div>
+        <h2>Grow Your Portfolio</h2>
+        <p>End-to-end property management and investment acquisition services designed to maximise rental yield and capital growth.</p>
+        <ul><li>Tenant screening & management</li><li>Investment property sourcing</li><li>Market rent optimisation</li><li>Monthly reporting & EOFY summaries</li></ul>
+        <button class="btn-gold" onclick="nav('booking',null)">Speak to an Agent</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-top">
+      <div><div class="foot-brand-name">Meridian Property Group</div><div class="foot-brand-tag">Sydney · Est. 2008</div><div class="foot-brand-desc">Sydney's premier boutique real estate agency.</div></div>
+      <div class="foot-col"><h4>Services</h4><ul><li><a href="#">Sales</a></li><li><a href="#">Appraisal</a></li><li><a href="#">Mgmt</a></li><li><a href="#">Buyer Advocacy</a></li></ul></div>
+      <div class="foot-col"><h4>Agency</h4><ul><li><a href="#">About</a></li><li><a href="#">Team</a></li></ul></div>
+      <div class="foot-col"><h4>Contact</h4><ul><li>22 Miller St, North Sydney</li><li><a href="tel:+61292940400">(02) 9294 0400</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><p>© 2025 Meridian Property Group. All rights reserved.</p><div class="foot-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+  </footer>
+
+</div><!-- /services -->
+
+
+<!-- ══════════════════════════ BOOKING ══════════════════════════ -->
+<div id="booking" class="page">
+  <div class="booking-wrap-re">
+
+    <div class="bleft">
+      <div class="bleft-img"></div>
+      <div class="bleft-overlay"></div>
+      <div class="bleft-content">
+        <div class="bleft-top">
+          <div class="eyebrow-light">Free Consultation</div>
+          <h2>Book Your<br>Free <em>Property</em><br>Appraisal</h2>
+          <p>A no-obligation, expert appraisal of your property's market value — delivered by a senior agent who knows your suburb inside out.</p>
+        </div>
+        <div>
+          <div class="bleft-info">
+            <div class="bli"><div class="bli-icon">📍</div><div><h4>Our Office</h4><span>Level 3, 22 Miller Street, North Sydney NSW 2060</span></div></div>
+            <div class="bli"><div class="bli-icon">📹</div><div><h4>Video Appraisal Available</h4><span>Full virtual appraisal via Zoom — no need to be present</span></div></div>
+            <div class="bli"><div class="bli-icon">🏠</div><div><h4>On-Site Appraisal</h4><span>We come to your property — most convenient for vendors</span></div></div>
+            <div class="bli"><div class="bli-icon">📞</div><div><h4>Call Direct</h4><span>(02) 9294 0400 · Mon–Sat 8:30am–6pm</span></div></div>
+          </div>
+          <div class="avail-panel">
+            <h4>Appraisal Availability — This Week</h4>
+            <div class="avail-row"><span class="avail-day">Mon 28 Apr</span><span class="avail-badge ab-open">Available</span></div>
+            <div class="avail-row"><span class="avail-day">Tue 29 Apr</span><span class="avail-badge ab-few">2 slots left</span></div>
+            <div class="avail-row"><span class="avail-day">Wed 30 Apr</span><span class="avail-badge ab-full">Fully Booked</span></div>
+            <div class="avail-row"><span class="avail-day">Thu 1 May</span><span class="avail-badge ab-open">Available</span></div>
+            <div class="avail-row"><span class="avail-day">Sat 3 May</span><span class="avail-badge ab-few">3 slots left</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bright">
+      <h3>Request Your Appointment</h3>
+      <div class="fg-row">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="e.g. Victoria"></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="e.g. Thompson"></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="name@email.com.au"></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="04XX XXX XXX"></div>
+      <div class="fg">
+        <label>Property Address</label>
+        <input type="text" placeholder="e.g. 42 Raglan Street, Mosman NSW 2088">
+      </div>
+      <div class="fg">
+        <label>I Am Enquiring As A…</label>
+        <select>
+          <option value="">— Please select —</option>
+          <option>Vendor — I'm looking to sell</option>
+          <option>Buyer — I'm looking to purchase</option>
+          <option>Investor — Buying/managing investment property</option>
+          <option>Landlord — Looking for property management</option>
+          <option>Just exploring — not ready yet</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Appraisal Type</label>
+        <select>
+          <option>On-Site Appraisal (recommended)</option>
+          <option>Video Appraisal via Zoom</option>
+          <option>Phone Consultation</option>
+          <option>Office Meeting — North Sydney</option>
+        </select>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Preferred Date</label><input type="date"></div>
+        <div class="fg"><label>Preferred Agent</label>
+          <select>
+            <option>No preference</option>
+            <option>Victoria Meridian</option>
+            <option>James Harrington</option>
+            <option>Priya Nair</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Preferred Time</label>
+        <div class="time-chips">
+          <div class="tc" onclick="selTime(this)">8:30 am</div>
+          <div class="tc" onclick="selTime(this)">9:30 am</div>
+          <div class="tc" onclick="selTime(this)">10:30 am</div>
+          <div class="tc" onclick="selTime(this)">12:00 pm</div>
+          <div class="tc" onclick="selTime(this)">1:30 pm</div>
+          <div class="tc" onclick="selTime(this)">3:00 pm</div>
+          <div class="tc" onclick="selTime(this)">4:30 pm</div>
+          <div class="tc" onclick="selTime(this)">Flexible</div>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Additional Notes</label>
+        <textarea placeholder="Property details, any questions, preferred timing, or anything else we should know before the appraisal…"></textarea>
+      </div>
+      <button class="submit-re" onclick="bookNow()">Request My Free Appraisal →</button>
+      <div class="form-success" id="fsuccess">
+        ✅ &nbsp;<strong>Appraisal request received.</strong> A senior agent will contact you within 2 business hours to confirm your appointment. We look forward to meeting you.
+      </div>
+      <p class="form-note">By submitting this form you consent to being contacted by Meridian Property Group about your enquiry. All information is handled in accordance with our Privacy Policy and the Privacy Act 1988 (Cth). This form does not constitute a listing agreement.</p>
+    </div>
+
+  </div>
+</div><!-- /booking -->
+
+<script>
+  function nav(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    if (el) el.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function toggle(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.sa-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function selTime(el) {
+    document.querySelectorAll('.tc').forEach(t => t.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+
+  function bookNow() {
+    const s = document.getElementById('fsuccess');
+    s.classList.add('show');
+    s.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
