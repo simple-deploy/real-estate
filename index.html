@@ -135,6 +135,14 @@
       color: var(--ink) !important;
     }
 
+    .nav-toggle {
+      display: none;
+      color: var(--white);
+      font-size: 1.8rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
     /* ══════════ PAGE SYSTEM ══════════ */
     .page {
       display: none;
@@ -162,8 +170,9 @@
     /* ══════════ HERO ══════════ */
     .hero {
       position: relative;
-      height: calc(100vh - 74px);
-      min-height: 620px;
+      min-height: calc(100vh - 74px);
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
       background: var(--ink);
     }
@@ -198,11 +207,11 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      height: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0 56px;
+      padding: 40px 56px;
       max-width: 780px;
     }
 
@@ -227,7 +236,7 @@
 
     .hero h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 6vw, 5.2rem);
+      font-size: clamp(2.4rem, 8vw, 5.2rem);
       font-weight: 300;
       color: var(--white);
       line-height: 1.08;
@@ -293,10 +302,8 @@
 
     /* hero search bar */
     .hero-search {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: relative;
+      margin-top: auto;
       z-index: 3;
       background: var(--white);
       padding: 22px 56px;
@@ -1692,8 +1699,26 @@
         padding: 0 20px;
       }
 
+      .nav-toggle {
+        display: block;
+      }
+
       .nav-links {
         display: none;
+        position: absolute;
+        top: 74px;
+        left: 0;
+        right: 0;
+        background: rgba(14, 14, 14, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 30px 20px;
+        border-bottom: 1px solid rgba(184, 150, 78, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-links.show {
+        display: flex;
       }
 
       .hero-content,
@@ -1706,10 +1731,34 @@
         padding-right: 22px;
       }
 
+      .hero-content {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
       .hero-search {
         padding: 18px 22px;
-        flex-wrap: wrap;
-        gap: 10px;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .hs-field {
+        margin-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 0;
+        flex: 1 1 100%;
+      }
+
+      .hs-field:last-of-type {
+        border-bottom: none;
+        margin-bottom: 10px;
+      }
+
+      .hs-btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 0.85rem;
       }
 
       .listings-grid,
@@ -1758,6 +1807,7 @@
       Meridian Property Group
       <span>Sydney · NSW · Est. 2008</span>
     </div>
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
     <ul class="nav-links">
       <li><a href="#" class="active" onclick="nav('home',this)">Home</a></li>
       <li><a href="#" onclick="nav('whypick',this)">Why Choose Us</a></li>
@@ -2711,18 +2761,13 @@
                 </div>
               </div>
             </div>
-            <div class="avail-panel">
-              <h4>Appraisal Availability — This Week</h4>
-              <div class="avail-row"><span class="avail-day">Mon 28 Apr</span><span
-                  class="avail-badge ab-open">Available</span></div>
-              <div class="avail-row"><span class="avail-day">Tue 29 Apr</span><span class="avail-badge ab-few">2 slots
-                  left</span></div>
-              <div class="avail-row"><span class="avail-day">Wed 30 Apr</span><span class="avail-badge ab-full">Fully
-                  Booked</span></div>
-              <div class="avail-row"><span class="avail-day">Thu 1 May</span><span
-                  class="avail-badge ab-open">Available</span></div>
-              <div class="avail-row"><span class="avail-day">Sat 3 May</span><span class="avail-badge ab-few">3 slots
-                  left</span></div>
+            <div class="avail-panel"
+              style="padding: 0; overflow: hidden; background: #fafafa; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+              <iframe
+                src="https://maps.google.com/maps?q=22%20Miller%20St,%20North%20Sydney%20NSW%202060&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="280" style="border:0; display: block;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
             </div>
           </div>
         </div>
@@ -2803,12 +2848,17 @@
   </div><!-- /booking -->
 
   <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('show');
+    }
+
     function nav(id, el) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
       if (el) el.classList.add('active');
       window.scrollTo(0, 0);
+      document.querySelector('.nav-links').classList.remove('show');
     }
 
     function toggle(header) {
