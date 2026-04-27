@@ -2873,6 +2873,18 @@
       el.classList.add('sel');
     }
 
+    function initAppointmentDate() {
+      const dateInput = document.getElementById('rdate');
+      if (!dateInput) return;
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    }
+
+    initAppointmentDate();
+
     function bookNow() {
       const btn = document.querySelector('.submit-re');
       const s = document.getElementById('fsuccess');
@@ -2887,6 +2899,20 @@
       });
 
       if (!ok) { alert('Please fill in all required fields.'); return; }
+
+      const selectedDate = document.getElementById('rdate').value;
+      if (selectedDate) {
+        const chosenDate = new Date(selectedDate);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (chosenDate < today) {
+          alert('Please choose today or a future date for your appointment.');
+          document.getElementById('rdate').focus();
+          btn.textContent = 'Request My Free Appraisal →';
+          btn.disabled = false;
+          return;
+        }
+      }
 
       // Collect time chip
       const timeEl = document.querySelector('.tc.sel');
